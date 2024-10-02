@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <style>
+        .center{
+            position: relative;
+           display: flex;
+           flex-direction: column;
+           justify-content:center;
+           align-items:center;
+           top: 150px;
+           height:200px;
+           
+           background-color: rgb(202, 221, 215);
+           border:30px solid rgb(13, 37, 79);
+           padding: 21px;
+
+        }
+        .button_container{
+            position: relative;
+            display:flex;
+            justify-content: space-between;
+            flex-direction: column;
+            left: 10px;
+            gap:20px;
+    
+        }
+       
+       
+    </style>
+    <div class="center">
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required placeholder="in all lower_case"><br><br>
+        <label for="password">Password::</label>
+        <input type="password" id="password" name="password" required><br>
+        <br>
+        <div class ="button_container">
+      
+            <button type="submit">Login</button>
+            <button id="SignUp" type="button">SignUp</button>
+            
+        </div>
+       
+        
+    </form>
+    
+</div>
+
+
+
+
+    
+
+    <script src="login.js"></script>
+</body>
+</html>
