@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         age: age
       };
   
-      fetch(`http://localhost:3000/user/signup`, {           //   //only delete till .com     https://authorities-name-poetry-val.trycloudflare.com
+      fetch(`https://backend-4-uwql.onrender.com/user/signup`, {           //   //only delete till .com     http://localhost:3000/user/signup
         method: 'POST',
         headers: {
           "Content-Type": "application/json"
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (response.response === true) {
           // If signup is successful, show success alert
           alert("Signup success, please login");
-          window.location.href = '/index.html';  // Redirect to login page
+          window.location.href = '/login.html';  // Redirect to login page
         } else if (response.response === "not success") {
           // If validation fails, show validation error
           alert(`Signup failed: ${response.msg}`);
