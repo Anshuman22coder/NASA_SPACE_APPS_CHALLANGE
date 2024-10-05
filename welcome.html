@@ -4,19 +4,165 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
+    <style>
+        /* Body styling with a gradient background */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(45deg, #00b3ff, #ff00e6);
+            animation: gradientAnimation 15s ease infinite;
+            color: #fff;
+            text-align: center;
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Navbar styling */
+        .navbar {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            height: 60px;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar ul li {
+            display: inline;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+
+        /* Content wrapper */
+        .content-wrapper {
+            padding: 20px;
+            margin-top: 70px;
+        }
+
+        /* Text styles */
+        h1 {
+            font-size: 48px;
+            margin: 0;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 
+                         0 0 20px rgba(255, 0, 255, 0.8);
+        }
+
+        p {
+            font-size: 24px;
+            margin: 10px 0;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 
+                         0 0 15px rgba(255, 0, 255, 0.6);
+        }
+
+        /* GLOBE Quest Section */
+        .globe-quest {
+            margin-top: 30px;
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .globe-quest h2 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        /* Button styles */
+        .logout-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.3);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+    </style>
 </head>
-<body >
+<body>
+    <!-- Navbar Section -->
+    <div class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="/about.html">Contact</a></li>
+            <li><a href="leaderboard.html">Leaderboard</a></li>
+            <li><a href="#" onclick="redirectToTeamFormation()">My Team</a></li>
+        </ul>
+    </div>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <!-- Welcome Section -->
+        <h1>Welcome, <span id="username"></span>!</h1>
+        <p>You have successfully logged in.</p>
+        <button class="logout-btn" onclick="window.location.href='/.html';">STARTQUEST</button>
+        <button class="logout-btn" onclick="window.location.href='/login.html';">Logout</button>
+
+        <!-- GLOBE Quest Section -->
+        <div class="globe-quest">
+            <h2>Welcome to GLOBE Quest</h2>
+            <p>GLOBE Quest is an interactive game designed to educate students about environmental issues using GLOBE protocols. 
+            Through engaging storytelling and competitive challenges, students explore their local environments, gather data, 
+            and contribute to global scientific research. Join us to embark on an exciting journey of environmental discovery 
+            and make a real-world impact!</p>
+        </div>
+    </div>
+
     <script>
+        // Define the redirect function globally
+        function redirectToTeamFormation() {
+            const username = document.getElementById("username").textContent;
+            if (username) {
+                window.location.href = `team_formation.html?username=${username}`;
+            } else {
+                alert("Username is not available.");
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
-
-        const params = new URLSearchParams(window.location.search);
-         const username=params.get("username"); //extract "username" from query parameter 
-         document.getElementById("p").textContent=`Welcome, ${username} !`;
-        })
-   </script>
-    <p id="p"></p>
-
-    <p>You have successfully logged in.</p>
-    
+            const params = new URLSearchParams(window.location.search);
+            const username = params.get("username"); // Extract "username" from query parameter
+            document.getElementById("username").textContent = username;
+        });
+    </script>
 </body>
 </html>
